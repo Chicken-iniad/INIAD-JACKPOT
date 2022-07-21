@@ -34,6 +34,8 @@ var time;
 var result1 = new Array();
 var result2 = new Array();
 var result3 = new Array();
+var result4 = new Array();
+var result5 = new Array();
 
 /*---------------------
  Functions
@@ -48,6 +50,10 @@ $(document).ready(function() {
   slotCreate( $("#slots_b .wrapper"), 2 );
   // C枠にスロット画像を生成
   slotCreate( $("#slots_c .wrapper"), 3 );
+  // D枠にスロット画像を生成
+  slotCreate( $("#slots_d .wrapper"), 4 );
+  // E枠にスロット画像を生成
+  slotCreate( $("#slots_e .wrapper"), 5 );
 });
 
 /* 当たり判定 */
@@ -71,6 +77,10 @@ function slotCreate(obj, slotno){
   var save_result2 = result2[slotno];
   // 3行目の画像INDEXをセーブ
   var save_result3 = result3[slotno];
+  // 4行目の画像INDEXをセーブ
+  var save_result4 = result4[slotno];
+  // 5行目の画像INDEXをセーブ
+  var save_result5 = result5[slotno];
 
   // スロット画像のタグ生成
   for (var i = 1; i <= slotNum; i++) {
@@ -153,11 +163,19 @@ function slotStart(){
   setTimeout( function() {
     slotMove($("#slots_c .wrapper"), 3 );
   }, 400);
+  // さらに少し遅れてD枠のスロット画像移動
+  setTimeout( function() {
+    slotMove($("#slots_d .wrapper"), 4 );
+  }, 600);
+  // さらに少し遅れてE枠のスロット画像移動
+  setTimeout( function() {
+    slotMove($("#slots_e .wrapper"), 5 );
+  }, 800);
 
   // スロット停止後の処理（jQueryキューで回転秒数後に実行）
   $(this).delay(time+500).queue(function() {
     // 結果判定
-    if (result2[1] == result2[2] && result2[1] == result2[3]) {
+    if (result2[1] == result2[2] && result2[1] == result2[3] && result2[1] == result2[4] && result2[1] == result2[5]) {
         // あたりメッセージ表示
         $("#slotMsg").html("BINGO !!!");
     } else {
@@ -203,7 +221,9 @@ html, body {
 
 #slots_a,
 #slots_b,
-#slots_c {
+#slots_c,
+#slots_d,
+#slots_e {
   position: relative;
   float: left;
   width: 48px;
@@ -215,14 +235,18 @@ html, body {
 
 #slots_a .wrapper,
 #slots_b .wrapper,
-#slots_c .wrapper {
+#slots_c .wrapper,
+#slots_d .wrapper,
+#slots_e .wrapper {
   position: absolute;
   width: 46px;
 }
 
 #slots_a .wrapper .slot,
 #slots_b .wrapper .slot,
-#slots_c .wrapper .slot {
+#slots_c .wrapper .slot,
+#slots_d .wrapper .slot,
+#slots_e .wrapper .slot {
   width: 46px;
   height: 30px;
   text-align: center;
@@ -267,7 +291,7 @@ html, body {
   background-color: #A1272E;
   box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.8);
   border-radius: 5px;
-  width: 185px;
+  width: 280px;
   padding: 20px;
   margin: 0 auto;
   top: 50%;
@@ -313,6 +337,18 @@ html, body {
   <div class="slotline"></div>
 </div>
 <div id="slots_c">
+  <div class="wrapper"></div>
+  <div class="slotglass-top"></div>
+  <div class="slotglass-bottom"></div>
+  <div class="slotline"></div>
+</div>
+<div id="slots_d">
+  <div class="wrapper"></div>
+  <div class="slotglass-top"></div>
+  <div class="slotglass-bottom"></div>
+  <div class="slotline"></div>
+</div>
+<div id="slots_e">
   <div class="wrapper"></div>
   <div class="slotglass-top"></div>
   <div class="slotglass-bottom"></div>
