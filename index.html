@@ -144,7 +144,7 @@ function slotCreate(obj, slotno){
 /* スロットスタート */
 function slotStart(){
   increment_count();
-
+  $('.counter').text(count);
   // スタートボタンの無効化
   $("#startBtn").prop('disabled', true);
 
@@ -328,9 +328,17 @@ html, body {
   text-shadow:1px 1px 2px #333;
   outline: 0;
 }
+.info_box {
+  margin-top: -30px;
+  margin-bottom: -15px;
+  color: white;
+}
 </style>
 
 <div id="slotbox">
+  <div class="info_box">
+    <p>count:<span class="counter">0</span></p>
+  </div>
 
 <div id="slots_a">
   <div class="wrapper"></div>
