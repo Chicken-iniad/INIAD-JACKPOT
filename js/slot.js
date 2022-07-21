@@ -111,6 +111,12 @@ function slotCreate(obj, slotno) {
         } else if (i == middleNum + 1) {
             // 最後に3行目にくる画像
             result3[slotno] = idx;
+        } else if (i == middleNum + 2) {
+            // 最後に4行目にくる画像
+            result4[slotno] = idx;
+        } else if (i == middleNum + 3) {
+            // 最後に5行目にくる画像
+            result5[slotno] = idx;
         } else if (i == slotNum - 2) {
             // 最初に1行目にくる画像
             if (save_result1 != undefined) {
@@ -128,6 +134,18 @@ function slotCreate(obj, slotno) {
             if (save_result3 != undefined) {
                 // 前回結果の3行目の画像INDEXを設定
                 idx = save_result3;
+            }
+        } else if (i == slotNum) {
+            // 最初に4行目にくる画像
+            if (save_result4 != undefined) {
+                // 前回結果の4行目の画像INDEXを設定
+                idx = save_result4;
+            }
+        } else if (i == slotNum) {
+            // 最初に5行目にくる画像
+            if (save_result5 != undefined) {
+                // 前回結果の5行目の画像INDEXを設定
+                idx = save_result5;
             }
         }
 
