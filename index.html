@@ -36,6 +36,13 @@ var result2 = new Array();
 var result3 = new Array();
 var result4 = new Array();
 var result5 = new Array();
+var count = localStorage.getItem('count') === null ?
+  (() => {localStorage.setItem('count', 0); return 0})() :
+  localStorage.getItem('count');
+var increment_count = () => {
+  localStorage.setItem('count', ++count);
+  console.log(count);
+};
 
 /*---------------------
  Functions
@@ -136,6 +143,7 @@ function slotCreate(obj, slotno){
 
 /* スロットスタート */
 function slotStart(){
+  increment_count();
 
   // スタートボタンの無効化
   $("#startBtn").prop('disabled', true);
