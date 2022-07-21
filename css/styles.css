@@ -6,6 +6,8 @@
   body {
     height: 100%;
     margin: 0;
+    /* Google Fontsで指定したフォント */
+    font-family: 'M PLUS 1', sans-serif;
   }
 
   #slots_a,
