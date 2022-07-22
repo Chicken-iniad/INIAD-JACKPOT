@@ -3,6 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- レスポンシブ用 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="js/jquery.easing.1.3.js"></script>
   <link rel="stylesheet" href="./css/styles.css">
@@ -11,11 +14,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Font変更するときはこのURLも変わる（多分） -->
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@600&family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+
+  <!-- OGタグを設定することでTwitterとかにリンク張るときれいになるやつ -->
+  <meta name="description" content="みんなもINIAD-JACKPOT(https://chicken-iniad.github.io/INIAD-JACKPOT/)で遊ぼう！！！">
+  <meta name="og:title" content="INIAD JACKPOT">
+  <meta name="og:description" content="みんなもINIAD-JACKPOT(https://chicken-iniad.github.io/INIAD-JACKPOT/)で遊ぼう！！！">
+  <meta property="og:url" content="https://chicken-iniad.github.io/INIAD-JACKPOT/">
+
   <!-- ここまで -->
   <title>INIAD JACKPOT</title>
 </head>
 
-<body>
+<!-- 右クリックで画像が保存できるので拒否するように -->
+<body oncontextmenu="return false;">
   <div id="slotbox">
     <div class="info_box">
       <p>count:<span class="counter">0</span></p>
@@ -55,11 +66,26 @@
     <br style="clear: both" />
 
     <div id="slotMsg">Let' Start<br /></div>
-    <input id="startBtn" type="button" value="START" onclick="javascript:slotStart();" />
+    <!-- javascript:slotStart()でも下記でもどっちでも動くので消した -->
+    <input id="startBtn" type="button" value="START" onclick="slotStart()" />
 
   </div>
 
-  <script src="./js/slot.js"></script>
 </body>
+
+<!-- 個人的にこっちの方が画像が読み込まれてからスクリプトロードされるのでいいと思う -->
+<script src="./js/slot.js"></script>
+<script>
+  // 一部型番のMac Safariで起こる表示ずれの修正 
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) {
+      window.location.reload();
+      setInterval(function() {
+        $(window).resize();
+        window.location.reload();
+      }, 100);
+    }
+  });
+</script>
 
 </html>
